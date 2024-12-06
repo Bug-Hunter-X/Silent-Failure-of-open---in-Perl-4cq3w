@@ -1,0 +1,5 @@
+This repository demonstrates a common, yet subtle, error in Perl: the silent failure of the `open()` function when a file does not exist and warnings are not enabled. The `bug.pl` script shows the problematic code, while `bugSolution.pl` presents a corrected version.
+
+The issue arises from the fact that Perl's `open()` function, when used without proper error handling, will return `false` if the file cannot be opened (e.g., due to the file not existing).  However, unless warnings are explicitly enabled, the script will continue to run without reporting this failure, potentially causing unexpected errors later in the script's execution.
+
+The solution involves using the `or die` construct with the `open()` function to explicitly check for errors and halt execution with an informative error message if the file cannot be opened.  Adding strict and warnings pragma is highly recommended for better error handling and code quality.
